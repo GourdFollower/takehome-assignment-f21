@@ -17,7 +17,7 @@ def create(type, payload):
     new_id = last_id + 1
     payload["id"] = new_id
     db_state[type].append(payload)
-    return payload
+    return new_id
 
 
 def updateById(type, id, update_values):
@@ -25,7 +25,7 @@ def updateById(type, id, update_values):
     if item is None:
         return None
     for k, v in update_values.items():
-        if k is not "id":
+        if k != "id":
             item[k] = v
     return item
 
